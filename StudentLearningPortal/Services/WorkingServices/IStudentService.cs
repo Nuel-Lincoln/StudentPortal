@@ -5,6 +5,7 @@ namespace StudentLearningPortal.Services.WorkingServices
 {
     public interface IStudentService
     {
+        public  Task<List<Student>> GetStudents();
         public Task<string> CreateStudent(Student student);
 
         public string UploadCourseMaterials(CourseMaterialz cms);

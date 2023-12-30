@@ -16,6 +16,22 @@ namespace StudentLearningPortal.Controllers
             _std = std;
         }
 
+        [HttpGet("GetStudents")]
+        public async Task<IActionResult> GetStudents()
+        {
+            var Std = await _std.GetStudents();
+
+            return Ok(Std);
+        }
+
+        [HttpGet("GetStudents1")]
+        public async Task<IActionResult> GetStudents1()
+        {
+            var Std = await _std.GetStudents();
+
+            return Ok(Std);
+        }
+
         [HttpPost("SignIn")]
         public async Task<IActionResult> SignIn(SignIn std)
         {

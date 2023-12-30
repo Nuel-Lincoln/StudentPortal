@@ -14,6 +14,11 @@ namespace StudentLearningPortal
 
             // Add services to the container.
 
+            builder.Services.AddCors(p => p.AddPolicy("corspolicy", build =>
+            {
+                build.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -31,7 +36,7 @@ namespace StudentLearningPortal
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("corspolicy");
             app.UseAuthorization();
 
 

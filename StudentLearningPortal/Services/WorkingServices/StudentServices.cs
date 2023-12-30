@@ -345,11 +345,14 @@ namespace StudentLearningPortal.Services.WorkingServices
         }
 
 
-        public async Task<Student> getStudent(string StudentId)
+        public async Task<List<Student>> GetStudents()
         {
-            Student OneStudent = (Student)_StudentCollection.Find(id => id.RegistrationNumber == StudentId);
+           
+            var Ccursor = await _StudentCollection.FindAsync(FilterDefinition<Student>.Empty);
+            var Value = await Ccursor.ToListAsync();
+            return Value;
 
-            return OneStudent;
+
         }
 
 
@@ -480,7 +483,11 @@ namespace StudentLearningPortal.Services.WorkingServices
             // Check if the content type contains any of the allowed types
             return allowedTypes.Any(type => contentType.Contains(type, StringComparison.OrdinalIgnoreCase));
         }
-           
+
+        public Task<Student> getStudent(string StudentId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
